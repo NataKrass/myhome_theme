@@ -11,7 +11,7 @@ get_header();
 ?>
     <div class="breadcrumb archive-breadcrumb"><?php the_breadcrumb() ?></div>
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main archive-page">
+		<main id="main" class="site-main archive-page 1">
           <div class="container">
 				
 				<?php if ( have_posts() ) : ?>

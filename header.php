@@ -15,11 +15,10 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<!-- <link rel="profile" href="https://gmpg.org/xfn/11"> -->
  
   <?php wp_head(); ?>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+
 
 </head>
 
@@ -43,7 +42,9 @@
                 <?php echo $tel['text_tel'];?></a>
               </div>
               <div class="top-nav_li top-nav_lang">
-              <?php pll_the_languages( array( 'dropdown' => 1 ) ); ?>
+              <ul class="lang-flags"><?php pll_the_languages( array( 'show_flags' => 1, 'show_names' => 0, 'dropdown' => 0, ) ); ?></ul>
+              <?php pll_the_languages( array( 'dropdown' => 1, 'show_flags' => 1 ) ); ?>
+             
                   
               </div>
               <ul class="top-nav_li top-nav_soc">
@@ -114,8 +115,8 @@
             <div class="slide-content slide-content_inner">
               
               <h1 class="inner-page_heading"><?php the_title(); ?></h1>
-              <p class="inner-page_heading-text">All features and services</p>
-              <button class="video slider-heading-btn slider-heading-btn_inner" data-toggle="modal" data-target="#slider-modal"><i class="fas fa-play-circle"></i> <p>Watch Our Video</p></button>
+              <p class="inner-page_heading-text"><?php pll_e('All features and services'); ?></p>
+              <button class="video slider-heading-btn slider-heading-btn_inner" data-toggle="modal" data-target="#slider-modal"><i class="fas fa-play-circle"></i> <p><?php pll_e('Watch Our Video'); ?></p></button>
                 <div id="popup-header" class="popup-header">
                   <button type="button" class="close">
                     <span aria-hidden="true"><i class="far fa-times-circle"></i></span>

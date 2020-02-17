@@ -6,6 +6,7 @@
 get_header(); ?>
 
     <section class="header-home">
+    
         <div class="header-home">
           <div class="header-slider">
             <div class="slide" style="background-image: url(<?php the_field('slide_1') ?>);"></div>
@@ -25,7 +26,7 @@ get_header(); ?>
               </div>
               <h1><?php the_field('main_title') ?></h1>
               <p class="slider-heading-text"> <?php the_field('main_subtitle') ?></p>
-              <button class="video slider-heading-btn" data-toggle="modal" data-target="#slider-modal"><i class="fas fa-play-circle"></i> <p>Watch Our Video</p></button>
+              <button class="video slider-heading-btn" data-toggle="modal" data-target="#slider-modal"><i class="fas fa-play-circle"></i> <p><?php pll_e('Watch Our Video'); ?></p></button>
                 <div id="popup-header" class="popup-header">
                   <button type="button" class="close">
                     <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
@@ -37,24 +38,32 @@ get_header(); ?>
                 <div class="overlay"></div>
               <!-- </div> -->
               <form class="slider-form">
-                <h3>Check Availability</h3>
+                <h3><?php pll_e('Check Availability'); ?></h3>
                 <div class="form-group">
                   <div class="controls">
-                      <input type="date" id="arrive" class="floatLabel" name="arrive" placeholder="Check-in" value="<?php echo date('yyyy-MM-dd'); ?>">
+                      <input type="date" id="arrive" class="floatLabel" name="arrive" placeholder="Check-in" value="<?php echo date('Y-m-d'); ?>">
                       <label for="arrive" class="label-date">Check-in</label>
                   </div> 
                   <div class="controls">
-                      <input type="date" id="depart" class="floatLabel" name="depart" value="<?php echo date('yyyy-MM-dd'); ?>" />
+                      <input type="date" id="depart" class="floatLabel" name="depart" value="<?php echo date('Y-m-d'); ?>" />
                       <label for="depart" class="label-date">Check-out </label>
                   </div>
-                  <div class="controls controls-select">
+                  <div class="controls controls-select controls-room">
                 
                   <select class="floatLabel select-room">
                     <option value="blank"></option>
-                    <option value="deluxe">Single</option>
-                    <option value="Zuri-zimmer">Premium</option>
-                    <option value="Zuri-zimmer">Double</option>
-                    <option value="Zuri-zimmer">Executive</option>
+                  
+                      <?php $args = array('post_type' => 'room', 'posts_per_page' => -1);
+                        $room = new WP_Query( $args ); // loop
+                        if( $room -> have_posts() ) : ?>
+                          <?php while( $room -> have_posts() ) :
+                            $room -> the_post();
+                         ?>
+                      <option value="<?php the_title(); ?>"><?php the_title(); ?></option>
+                          
+                      <?php endwhile; 
+                       endif;
+                        wp_reset_postdata() ?>
                   </select>
                   <label for="fruit">Room</label>
                 </div>  
@@ -68,25 +77,26 @@ get_header(); ?>
                     </select>
                     <label for="fruit">Guests</label>
                 </div>   
-                <a href="/myhome/reservations" value="Submit" class="header-form-btn">Search now</a>
+                <a type="submit" class="header-form-btn"><?php pll_e('Search now'); ?></a>
                 </div>    
                
               </form>
-                        
+                    
             </div>
           </div>
           </div>
         </div>
       </div>	
     </section>
+    <!-- <div>..<?php echo do_shortcode('[display-posts post_type = "room"]') ?></div> -->
 	  <section class="about">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <h2>
-              <p class="heading-text">Welcome to</p>
+              <p class="heading-text"><?php pll_e('Welcome to'); ?></p>
               <p class="heading">My <span>home</span> </p>
-              <p class="heading-after">Serviced Apartments</p>
+              <p class="heading-after"><?php echo pll_e('Serviced Apartments'); ?></p>
             </h2>
             <div class="about-text">
             <?php
@@ -95,35 +105,35 @@ get_header(); ?>
                     ?>
             
             </div>
-            <h3>Apartment prices starting from:</h3>
+            <h3><?php pll_e('Apartment prices starting from:'); ?></h3>
             <div class="about-prices">
               <div class="about-prices_box">
                 <p class="about-prices_box-price"><?php echo do_shortcode('[wpcs_price value="'.get_field('price').'"]')?> </p>
-                <p class="about-prices_box-span"><span>*</span>per night for a</p>
+                <p class="about-prices_box-span"><span>*</span><?php pll_e('per night for a'); ?></p>
                 <h4><?php the_field('type')?></h4>
-                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span>staying over 30 nights</p>
-                <a href="/myhome/reservations/" class="about-price_btn">Book now</a>
+                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span><?php pll_e('staying over 30 nights'); ?></p>
+                <a href="/myhome/reservations/" class="about-price_btn"><?php pll_e('Book now'); ?></a>
               </div>
               <div class="about-prices_box">
                 <p class="about-prices_box-price"><?php echo do_shortcode('[wpcs_price value="'.get_field('price_2').'"]')?></p>
-                <p class="about-prices_box-span"><span>*</span>per night for a</p>
+                <p class="about-prices_box-span"><span>*</span><?php pll_e('per night for a'); ?></p>
                 <h4><?php the_field('type_2')?></h4>
-                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span>staying over 30 nights</p>
-                <a href="/myhome/reservations/" class="about-price_btn">Book now</a>
+                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span><?php pll_e('staying over 30 nights'); ?></p>
+                <a href="/myhome/reservations/" class="about-price_btn"><?php pll_e('Book now'); ?></a>
               </div>
               <div class="about-prices_box">
                 <p class="about-prices_box-price"><?php echo do_shortcode('[wpcs_price value="'.get_field('price_3').'"]')?></p>
-                <p class="about-prices_box-span"><span>*</span>per night for a</p>
+                <p class="about-prices_box-span"><span>*</span><?php pll_e('per night for a'); ?></p>
                 <h4><?php the_field('type_3')?></h4>
-                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span>staying over 30 nights</p>
-                <a href="/myhome/reservations/" class="about-price_btn">Book now</a>
+                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span><?php pll_e('staying over 30 nights'); ?></p>
+                <a href="/myhome/reservations/" class="about-price_btn"><?php pll_e('Book now'); ?></a>
               </div>
               <div class="about-prices_box">
                 <p class="about-prices_box-price"><?php echo do_shortcode('[wpcs_price value="'.get_field('price_4').'"]')?> </p>
-                <p class="about-prices_box-span"><span>*</span>per night for a</p>
+                <p class="about-prices_box-span"><span>*</span><?php pll_e('per night for a'); ?></p>
                 <h4><?php the_field('type_4')?></h4>
-                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span>staying over 30 nights</p>
-                <a href="/myhome/reservations/" class="about-price_btn">Book now</a>
+                <p class="about-prices_box-span_sm about-prices_box-span"><span>*</span><?php pll_e('staying over 30 nights'); ?></p>
+                <a href="/myhome/reservations/" class="about-price_btn"><?php pll_e('Book now'); ?></a>
               </div>
             </div>
           </div>
@@ -175,7 +185,7 @@ get_header(); ?>
                           <div class="slider-rooms_box-person"><?php the_field('person') ?></div>
                       </div>
                       <div class="slider-rooms-link">
-                        <a href="<?php the_permalink(); ?>" class="slider-rooms-btn">Check availability</a>
+                        <a href="<?php the_permalink(); ?>" class="slider-rooms-btn"><?php pll_e('Check Availability'); ?></a>
                       </div>
                           
                     
@@ -197,9 +207,9 @@ get_header(); ?>
     
     <section class="advantages">
       <h2>
-        <p class="heading-text">Some motivational</p>
-        <p class="heading"> <span>Advantages</span> </p>
-        <p class="heading-after">To stay with us</p>
+        <p class="heading-text"><?php pll_e('Some motivational'); ?></p>
+        <p class="heading"> <span><?php pll_e('Advantages'); ?></span> </p>
+        <p class="heading-after"><?php pll_e('To stay with us'); ?></p>
       </h2>
   
       <div class="advantages-slider">
@@ -230,7 +240,7 @@ get_header(); ?>
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Have a question? Call us <?php $tel = get_option('myhome_theme_options'); ?>
+            <p><?php pll_e('Have a question? Call us'); ?><?php $tel = get_option('myhome_theme_options'); ?>
                 <a href="tel:<?php echo $tel['text_tel'];?>">
                 <?php echo $tel['text_tel'];?></a></p>
           </div>
@@ -244,9 +254,9 @@ get_header(); ?>
           <div class="gallery-heading">
             <a href="/myhome/gallery/">
               <h2>
-                <p class="heading-text">Gallery</p>
+                <p class="heading-text"><?php pll_e('Gallery'); ?></p>
                 
-                <p class="heading-after">Make yourself comfortable</p>
+                <p class="heading-after"><?php pll_e('Make yourself comfortable'); ?></p>
               </h2>
             </a>
           </div>
@@ -323,9 +333,9 @@ get_header(); ?>
           <div class="col-lg-6">
             <div class="special-text">
               <h5><?php the_field('special_title')?></h5>
-              <p class="special-text_green"><span>From</span> <?php the_field('special_price')?></p>
+              <p class="special-text_green"><span><?php pll_e('From'); ?></span> <?php the_field('special_price')?></p>
               <p class="special-text_grey"><?php the_field('special_text')?></p>
-                <a href="/myhome/reservations/" class="special-btn">Book now</a>
+                <a href="/myhome/reservations/" class="special-btn"><?php pll_e('Book now'); ?></a>
             </div>
           </div>
         </div>

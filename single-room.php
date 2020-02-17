@@ -13,12 +13,12 @@ get_header();
 
     <div class="breadcrumb"><?php the_breadcrumb() ?></div>
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main single-flat">
+		<main id="main" class="site-main single-flat vvg">
 			<div class="container">
 			  <div class="row">
           <div class="col-12">
             <form class="slider-form">
-              <h3>Check Availability</h3>
+              <h3><?php pll_e('Check Availability'); ?></h3>
               <div class="form-group">
               <div class="controls">
                 <input type="date" id="arrive" class="floatLabel" name="arrive" placeholder="Check-in" value="<?php echo date('yyyy-MM-dd'); ?>">
@@ -49,7 +49,7 @@ get_header();
                 </select>
                 <label for="fruit">Guests</label>
               </div>   
-              <button type="submit" value="Submit" class="">Search now</button>
+              <a href="#" value="Submit" class="header-form-btn"><?php pll_e('Search now'); ?></a>
               </div>    
           
             </form>
@@ -113,10 +113,10 @@ get_header();
                    
           </div>
           <div class="col-lg-3">
-          <a href="#" class="single-btn">Book this room</a>
+          <a href="#" class="single-btn"><?php pll_e('Book this room'); ?></a>
        
 					<div class="servises">
-            <h5 class="single_servises-included">Services Included</h5>
+            <h5 class="single_servises-included"><?php pll_e('Services Included'); ?></h5>
 					  <?php
 						$colors = get_field('servises');
 						if( $colors ): ?>
@@ -134,7 +134,7 @@ get_header();
 			</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-  <section class="special">
+    <section class="special">
       <div class="container">
         <div class="row">
           <div class="col-lg-6">
@@ -146,67 +146,66 @@ get_header();
           <div class="col-lg-6">
             <div class="special-text">
               <h5><?php the_field('special_title')?></h5>
-              <p class="special-text_green"><span>From</span> <?php the_field('special_price')?></p>
+              <p class="special-text_green"><span><?php pll_e('From'); ?></span> <?php the_field('special_price')?></p>
               <p class="special-text_grey"><?php the_field('special_text')?></p>
-                <a href="/myhome/reservations/" class="special-btn">Book now</a>
+                <a href="/myhome/reservations/" class="special-btn"><?php pll_e('Book now'); ?></a>
             </div>
           </div>
         </div>
       </div>
     </section>
-	<!--  -->
-  <section class="rooms">
-    <div class="slider-rooms" id="slider">
-      <?php $args = array('post_type' => 'room', 
-        'posts_per_page' => -1,);
-          $book = new WP_Query( $args ); // loop
-          if( $book->have_posts() ) : ?>
-            <?php while( $book->have_posts() ) :
-              $book->the_post();
-          ?>
-          <div class="slider-rooms_item">
-            <div class="slider-rooms_box" style=" background-image: url(<?php the_field('image_for_slide')?>);">
-                <div class="slider-rooms_box-content">
-                <p><?php the_title(); ?></p>
-                <div class="slider-rooms_box-inner">
-                    <span><?php the_field('floor') ?></span>
-                    <div class="slider-rooms_box-lists">
-                        <?php
-                        $fac = get_field('facilities');
-                        if( $fac ): ?>
-                        <ul class="slider-rooms_box-list">
-                          <?php foreach( $fac as $fac ): ?>
-                            <li><?php echo $fac; ?></li>
-                          <?php endforeach; ?>
-                        </ul>
-                        <div class="slider-rooms_box-person"><?php the_field('person') ?></div>
-                    </div>
-                    <div class="slider-rooms-link">
-                      <a href="<?php the_permalink(); ?>" class="slider-rooms-btn">Check availability</a>
-                    </div>
-                        
-                   
-                </div>
+    <section class="rooms">
+      <div class="slider-rooms" id="slider">
+        <?php $args = array('post_type' => 'room', 
+          'posts_per_page' => -1,);
+            $book = new WP_Query( $args ); // loop
+            if( $book->have_posts() ) : ?>
+              <?php while( $book->have_posts() ) :
+                $book->the_post();
+            ?>
+            <div class="slider-rooms_item">
+              <div class="slider-rooms_box" style=" background-image: url(<?php the_field('image_for_slide')?>);">
+                  <div class="slider-rooms_box-content">
+                  <p><?php the_title(); ?></p>
+                  <div class="slider-rooms_box-inner">
+                      <span><?php the_field('floor') ?></span>
+                      <div class="slider-rooms_box-lists">
+                          <?php
+                          $fac = get_field('facilities');
+                          if( $fac ): ?>
+                          <ul class="slider-rooms_box-list">
+                            <?php foreach( $fac as $fac ): ?>
+                              <li><?php echo $fac; ?></li>
+                            <?php endforeach; ?>
+                          </ul>
+                          <div class="slider-rooms_box-person"><?php the_field('person') ?></div>
+                      </div>
+                      <div class="slider-rooms-link">
+                        <a href="<?php the_permalink(); ?>" class="slider-rooms-btn"><?php pll_e('Check Availability'); ?></a>
+                      </div>
+                          
+                    
+                  </div>
+              </div>
             </div>
-          </div>
-          <?php endif; ?>
-              <!-- <?php echo get_the_post_thumbnail( get_the_ID(), 'full' ); ?> -->
-            </div>
-      <?php endwhile; ?>
-          <?php endif;
-            wp_reset_postdata() ?>
-    </div>
-    <button class="slick-next slick-next-room slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-rightb.png"></button>
+            <?php endif; ?>
+                <!-- <?php echo get_the_post_thumbnail( get_the_ID(), 'full' ); ?> -->
+              </div>
+        <?php endwhile; ?>
+            <?php endif;
+              wp_reset_postdata() ?>
+      </div>
+      <button class="slick-next slick-next-room slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-rightb.png"></button>
       <button class="slick-next slick-next-room custom-next"><img src="<?php bloginfo('template_url'); ?>/assets/img/right-arrow.png"></button>
       <button class="slick-prev slick-prev-room slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-leftb.png"></button>
       <button class="slick-prev slick-prev-room custom-prev"><img src="<?php bloginfo('template_url'); ?>/assets/img/left-arrow.png"></button>
-  </section>
-  
-  <section class="advantages">
+    </section>
+
+    <section class="advantages">
       <h2>
-        <p class="heading-text">Some motivational</p>
-        <p class="heading"> <span>Advantages</span> </p>
-        <p class="heading-after">To stay with us</p>
+        <p class="heading-text"><?php pll_e('Some motivational'); ?></p>
+        <p class="heading"> <span><?php pll_e('Advantages'); ?></span> </p>
+        <p class="heading-after"><?php pll_e('To stay with us'); ?></p>
       </h2>
   
       <div class="advantages-slider">
@@ -232,12 +231,12 @@ get_header();
       <button class="slick-next next-adv slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-rightb.png"></button>
       <button class="slick-prev prev-adv slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-leftb.png"></button>
     </section>
-
-	<section class="call">
+  
+    <section class="call">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Have a question? Call us <?php $tel = get_option('myhome_theme_options'); ?>
+            <p><?php pll_e('Have a question? Call us'); ?><?php $tel = get_option('myhome_theme_options'); ?>
                 <a href="tel:<?php echo $tel['text_tel'];?>">
                 <?php echo $tel['text_tel'];?></a></p>
           </div>
@@ -245,7 +244,6 @@ get_header();
       </div>
 
     </section>
-			
 			  
 			   
 

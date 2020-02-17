@@ -37,9 +37,9 @@ get_header(); ?>
           <div class="col-lg-6">
             <div class="special-text">
               <h5><?php the_field('special_title')?></h5>
-              <p class="special-text_green"><span>From</span> <?php the_field('special_price')?></p>
+              <p class="special-text_green"><span><?php pll_e('From'); ?></span> <?php the_field('special_price')?></p>
               <p class="special-text_grey"><?php the_field('special_text')?></p>
-                <a href="/myhome/reservations/" class="special-btn">Book now</a>
+                <a href="/myhome/reservations/" class="special-btn"><?php pll_e('Book now'); ?></a>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@ get_header(); ?>
                           <div class="slider-rooms_box-person"><?php the_field('person') ?></div>
                       </div>
                       <div class="slider-rooms-link">
-                        <a href="<?php the_permalink(); ?>" class="slider-rooms-btn">Check availability</a>
+                        <a href="<?php the_permalink(); ?>" class="slider-rooms-btn"><?php pll_e('Check Availability'); ?></a>
                       </div>
                           
                     
@@ -94,15 +94,15 @@ get_header(); ?>
 
     <section class="advantages">
       <h2>
-        <p class="heading-text">Some motivational</p>
-        <p class="heading"> <span>Advantages</span> </p>
-        <p class="heading-after">To stay with us</p>
+        <p class="heading-text"><?php pll_e('Some motivational'); ?></p>
+        <p class="heading"> <span><?php pll_e('Advantages'); ?></span> </p>
+        <p class="heading-after"><?php pll_e('To stay with us'); ?></p>
       </h2>
-     
+  
       <div class="advantages-slider">
 
         <?php
-          $args = array('post_type' => 'advantage', 'post_per_page' => 8 );
+          $args = array('post_type' => 'advantage' );
 
           $loop = new WP_Query( $args );
           while ( $loop->have_posts() ) : $loop->the_post();?>
@@ -115,17 +115,19 @@ get_header(); ?>
           <?php
           the_content();?>
           </div>  
-        
-        <?php endwhile;?>
-      </div>
+          <?php wp_reset_postdata(); ?>
+        <?php endwhile;
+      ?>
+      </div> 
       <button class="slick-next next-adv slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-rightb.png"></button>
       <button class="slick-prev prev-adv slick-arrow"><img src="<?php bloginfo('template_url'); ?>/assets/img/arrow-leftb.png"></button>
     </section>
+  
     <section class="call">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Have a question? Call us <?php $tel = get_option('myhome_theme_options'); ?>
+            <p><?php pll_e('Have a question? Call us'); ?><?php $tel = get_option('myhome_theme_options'); ?>
                 <a href="tel:<?php echo $tel['text_tel'];?>">
                 <?php echo $tel['text_tel'];?></a></p>
           </div>
@@ -134,7 +136,7 @@ get_header(); ?>
 
     </section>
 
-
+   
 
 </div>
 </div>

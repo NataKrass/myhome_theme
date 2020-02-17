@@ -80,10 +80,16 @@ button {
     display: flex;
 }
 .top-nav_lang {
-   background-image: url(../img/flag.png);
-   background-repeat: no-repeat;
+   /* background-image: url(../img/flag.png);
+   background-repeat: no-repeat; */
    padding-left: 23px;
    background-size: 22px;
+}
+.lang-flags {
+    list-style: none;
+    display: flex;
+    width: 37px;
+    justify-content: space-between;
 }
 .top-nav_soc li a {
     background: #fff;
@@ -434,6 +440,18 @@ input.search-submit:hover .header_searchbar {
 .controls .select-room {
     background: url(../img/room.png) 87% 50% no-repeat;
 }
+.controls .select-room option {
+    font-size: 14px;
+}
+.controls-room .selected {
+    background: none;
+    font-size: 14px;
+    padding: 17px 17px 17px 5px;
+}
+
+.controls .select-room::selected {
+    background: none;
+}
 .controls .select-people {
     background: url(../img/guests.png) 87% 50% no-repeat;
 }
@@ -453,7 +471,9 @@ input.search-submit:hover .header_searchbar {
     position: absolute;
     right: 65px;
     }
-
+.controls-room .selected .controls-room:before {
+     display: none;
+}
 .controls input[type="date"]::-webkit-calendar-picker-indicator { 
     color: rgba(0, 0, 0, 0);
     opacity: 1;
@@ -489,6 +509,18 @@ form .form-group .header-form-btn:focus {
     background: #00c731;
     color: #fff;
 }
+.wpcf7-select {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    width: 100%;
+}
 .overlay {
     position: fixed;
     width: 100vw;
@@ -502,18 +534,43 @@ form .form-group .header-form-btn:focus {
 .fa-times-circle {
     color: #fff;
 }
+.footer-close .fa-times-circle {
+    color: #000;
+}
 .iframe {
     width: 1055px;
     height: 555px;
 }
-.popup-header,
-.popup-form {
+.popup-header, 
+.popup-form, .popup-forms {
   position: fixed;
   top: 10%;
   left: 18%;
   display: none;
   z-index: 9999;
 }
+.popup-form {
+    width: 60vw;
+    margin: 0 auto;
+    background: #fff;
+    padding: 10px 25px 0;
+    border-radius: 5px;
+    overflow-y: scroll;
+    height: 85%;
+}
+.popup-form h4 {
+    text-align: center;
+}
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #fff; }
+::-webkit-scrollbar-track {  background-color: #999;}
+::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+::-webkit-scrollbar-thumb { height: 70px; background-color: #00c731; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #fff;}}
+::-webkit-resizer { background-color: #666;}
+#popup-form::-webkit-scrollbar { width: 3px; height: 3px;}
+#popup-form::-webkit-scrollbar-corner { background-color: #000;}
+#popup-form::-webkit-scrollbar-button {  background-color: transparent; }
 .slide-content .modal {
     top: 0!important;
 }

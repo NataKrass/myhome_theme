@@ -92,10 +92,10 @@
     </section>
    
                 <div id="popup-form" class="popup-form">
-                  <button type="button" class="close">
+                <button type="button" class="close footer-close">
                     <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
                   </button>
-                  
+                <h4>Reservation Form</h4> 
                  <?php echo do_shortcode('[contact-form-7 id="524" title="Form"]') ?>
                 </div>
                 <div class="overlay"></div>

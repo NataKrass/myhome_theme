@@ -149,6 +149,7 @@ function myhome_scripts() {
 	wp_enqueue_script( 'myhome-slick', get_template_directory_uri() . '/assets/js/slick.js', array(), '20151215', true );
 	wp_enqueue_script( 'myhome-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 	wp_enqueue_script( 'myhome-main', get_template_directory_uri() . '/assets/js/main.js', array(), '20151215', true );
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -368,4 +369,62 @@ function polylang_shortcode() {
 	return $flags;
 	}
 	add_shortcode( 'polylang', 'polylang_shortcode' );
+
+//string
+add_action('init', function() {
+	pll_register_string('myhome', 'Welcome to');
+	pll_register_string('myhome', 'Serviced Apartments');
+	pll_register_string('myhome', 'Watch Our Video');
+	pll_register_string('myhome', 'Check Availability');
+	pll_register_string('myhome', 'Search now');
+	pll_register_string('myhome', 'Book now');
+	pll_register_string('myhome', 'per night for a');
+	pll_register_string('myhome', 'staying over 30 nights');
+	pll_register_string('myhome', 'Apartment prices starting from:');
+	pll_register_string('myhome', 'Some motivational');
+	pll_register_string('myhome', 'Advantages');
+	pll_register_string('myhome', 'To stay with us');
+	pll_register_string('myhome', 'Have a question? Call us');
+	pll_register_string('myhome', 'Gallery');
+	pll_register_string('myhome', 'Make yourself comfortable');
+	pll_register_string('myhome', 'From');
+	pll_register_string('myhome', 'Book this room');
+	pll_register_string('myhome', 'Services Included');
+	pll_register_string('myhome', 'All features and services');
+  });
+
+// shortcode
+function shortcode_colorblock(){
+	$tags = get_the_tags();
+
+	if ( is_array( $tags ) && ! empty( $tags ) ) {
+		$posts = get_posts( [
+			'showposts' => 10,
+			'exclude'   => get_the_ID(),
+			'tag_id'    => $tags[0]->term_id,
+		] );
+
+		if ( $posts ) {
+			$html = '<h3>Также читайте:</h3>';
+
+			$html .= '<ul>';
+			foreach ( $posts as $post ) {
+				$html .= sprintf( '<li><a href="%s">%s</a></li>', get_permalink( $post ), get_the_title( $post ) );
+			}
+			$html .= '</ul>';
+
+			return $html;
+		}
+
+	}
+		}
+
+	add_shortcode( 'colorblock', 'shortcode_colorblock' );
+	
+	function hello_world_cf7_func() {
+		return do_shortcode('[display-posts post_type = "room"]');
+   }
+   wpcf7_add_form_tag('hello_world', 'hello_world_cf7_func');
+
+//   
 

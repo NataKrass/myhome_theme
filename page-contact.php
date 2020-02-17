@@ -10,11 +10,15 @@ get_header(); ?>
     <div class="breadcrumb"><?php the_breadcrumb() ?></div>
 
    
+   
+
+ 
+  
     <section class="call">
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <p>Have a question? Call us <?php $tel = get_option('myhome_theme_options'); ?>
+            <p><?php pll_e('Have a question? Call us'); ?><?php $tel = get_option('myhome_theme_options'); ?>
                 <a href="tel:<?php echo $tel['text_tel'];?>">
                 <?php echo $tel['text_tel'];?></a></p>
           </div>
@@ -22,6 +26,7 @@ get_header(); ?>
       </div>
 
     </section>
+
 
 
 

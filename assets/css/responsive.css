@@ -59,6 +59,16 @@
     .slide-content_inner {
         padding-top: 77px;
     }
+    form .form-group .header-form-btn {
+        margin: 0 auto;
+        width: 100%;
+    }
+    .rooms .custom-next {
+        right: 12%;
+    }
+    .rooms .custom-prev {
+        left: 12%;
+    }
       /* mob menu */
     .navigation {
         position: fixed;
@@ -316,6 +326,19 @@
     .gallery-box_img {
         height: 225px;
     }
+    .special-text {
+        padding-left: 0;
+    }
+    
+    .home .header-inner {
+        display: none;
+    }
+    .main-nav {
+        margin-bottom: 0;
+    }
+    .header-home button:before {
+        display: none;
+    }
 }
 @media (min-width: 757px) {
     .about-prices_box:not(:first-child):before {
@@ -401,6 +424,9 @@
     }
 }
 @media (max-width: 540px){
+    .top-nav_soc li .top-nav_soc-fb {
+        padding: 5px 10px;
+    }
     .slide-mob {
         display: block;
         height: 810px;
@@ -419,6 +445,30 @@
     }
     .top-nav_list {
         width: 100%;
+        padding-left: 25px;
+        flex-wrap: inherit;
+    }
+    .lang-flags {
+        width: 70px;
+    }
+    .lang-flags li a img {
+        width: 25px;
+        height: auto;
+    }
+    .top-nav_soc {
+        padding-top: 16px;
+    }
+    .top-nav_li .currency-switcher-form select {
+        width: 66px!important;
+    }
+    .top-nav a {
+        font-size: 17px;
+    }
+    .top-nav, .top-nav select {
+        font-size: 15px;
+    }
+    .fa-phone-alt {
+        font-size: 16px;
     }
     .slider-heading-text {
         width: 85%;
@@ -504,6 +554,9 @@
         height: 189px;
         background-size: cover;
     }
+    .top-nav_lang select {
+        display: none;
+    }
 
 }
 @media (max-width: 481px) {
@@ -558,6 +611,11 @@
     .search-submit {
         right: -29px;
     }
+    .top-nav_soc {
+        width: 100%;
+        justify-content: center;
+    }
+
 }
 @media (max-width: 400px) {
     .contact-box h2 .heading {

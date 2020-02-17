@@ -8,23 +8,6 @@ $(document).ready(function(){
         autoplay: true,
         autoplaySpeed: 3000,
         dots: true,
-        responsive: [
-          {
-              breakpoint: 769,
-              settings: {
-                arrows: false,
-                dots: true
-              }
-            },
-            {
-              breakpoint: 380,
-              settings: {
-                arrows: false,
-                dots: true,
-               
-              }
-            }
-        ],
         nextArrow: $('.slick-next-head'),
         prevArrow: $('.slick-prev-head')
     });
@@ -74,7 +57,7 @@ $(document).ready(function(){
       variableWidth: true,
       focusOnSelect: true
     });
-    $('.slider-single').slick();
+  
 
     $('.advantages-slider').slick({
         infinite: true,
@@ -156,7 +139,7 @@ $(document).ready(function(){
     });
     
    //popup-form
-   $('.special-btn').click(function(event){
+   $('.header-form-btn').click(function(event){
     event.preventDefault();
     $('#popup-form').addClass("is-visible").animate({display: 'block', opacity: 1}, 200);
     $('.overlay').addClass('is-visible');
@@ -216,7 +199,34 @@ $(document).ready(function(){
       });
     }
    
-      
+
+    // form
+    const arrive = document.querySelector('#arrive'),
+          arriveForm = document.querySelector('input[name="date-865"]'),
+          depart = document.querySelector('#depart'),
+          departForm = document.querySelector('input[name="date-823"]'),
+          selectRoom = document.querySelector('.select-room'),
+          roomForm = document.querySelector('.order-roomtype'),
+          selectPeople = document.querySelector('.select-people'),
+          peopleForm = document.querySelector('input[name="number-10"]');
+    
+    arrive.addEventListener('blur', () => {
+      arriveForm.value = arrive.value; 
+    })
+    depart.addEventListener('blur', () => {
+      departForm.value = depart.value; 
+    })
+    selectRoom.addEventListener('blur', () => {
+      roomForm.value = selectRoom.value; 
+      console.log(selectRoom.value)
+      console.log(roomForm.value)
+    })
+    selectPeople.addEventListener('blur', () => {
+      peopleForm.value = selectPeople.value; 
+    })
+    
+  
+ 
    
 });
 
